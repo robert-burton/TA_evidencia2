@@ -36,7 +36,7 @@ def clear():
 
 respuesta = "s"
 
-while respuesta == "s":
+while respuesta == "s" or respuesta == "S":
     print("Programa para validar cadenas para la gramatica:")
     print("L = { i (w)^n i (wI)^(2n)j^2 |")
     print("w = ms,")
@@ -45,15 +45,16 @@ while respuesta == "s":
     print("j = roberto,")
     print("n≥ 1 })")
     print("")
+    print("")
 
     print("Ingrese una cadena para validar: ")
     entrada = input()
-    # solo hay que encontrar la forma de contar los "ms" y "sm"
-
+    print("")
     entradaSplit = re.split(r"\d+", entrada)
 
     # print(entradaSplit)
-    if len(entrada) > 1:
+
+    if len(entradaSplit) > 1:
         wEncontradas = re.findall(r"ms", entradaSplit[1])
         wIEncontradas = re.findall(r"sm", entradaSplit[-1])
 
@@ -73,8 +74,29 @@ while respuesta == "s":
             print("Cadena INVALIDA")
     else:
         print("Cadena INVALIDA")
+
+    print("")
     print("¿Desea validar otra cadena? (s/n)")
+
     respuesta = input()
+
+    while (
+        respuesta != "s" and respuesta != "n" and respuesta != "S" and respuesta != "N"
+    ):
+        clear()
+        print("Programa para validar cadenas para la gramatica:")
+        print("L = { i (w)^n i (wI)^(2n)j^2 |")
+        print("w = ms,")
+        print("i =1941421,")
+        print("wI= sm,")
+        print("j = roberto,")
+        print("n≥ 1 })")
+        print("")
+        print("")
+        print("Respuesta no reconocida")
+        print("")
+        print("¿Desea validar otra cadena? (s/n)")
+        respuesta = input()
     clear()
 
 print("Fin del programa")
