@@ -20,6 +20,20 @@
 
 import re
 
+from os import system, name
+
+
+def clear():
+
+    # for windows
+    if name == "nt":
+        _ = system("cls")
+
+    # for mac and linux(here, os.name is 'posix')
+    else:
+        _ = system("clear")
+
+
 respuesta = "s"
 
 while respuesta == "s":
@@ -38,27 +52,31 @@ while respuesta == "s":
 
     entradaSplit = re.split(r"\d+", entrada)
 
-    #print(entradaSplit)
+    # print(entradaSplit)
+    if len(entrada) > 1:
+        wEncontradas = re.findall(r"ms", entradaSplit[1])
+        wIEncontradas = re.findall(r"sm", entradaSplit[-1])
 
-    wEncontradas = re.findall(r"ms", entradaSplit[1])
-    wIEncontradas = re.findall(r"sm", entradaSplit[-1])
+        numWEncontradas = len(wEncontradas)
+        numWIEncontradas = len(wIEncontradas)
 
-    numWEncontradas = len(wEncontradas)
-    numWIEncontradas = len(wIEncontradas)
+        # print(numWEncontradas, numWIEncontradas)
 
-    #print(numWEncontradas, numWIEncontradas)
-
-    if numWIEncontradas == 2 * numWEncontradas:
-        cadenaRegex = re.compile(r"(1941421)(ms)+(1941421)(sm)+(roberto){2}")
-        mo = cadenaRegex.fullmatch(entrada)
-        if mo == None:
-            print("Cadena INVALIDA")
+        if numWIEncontradas == 2 * numWEncontradas:
+            cadenaRegex = re.compile(r"(1941421)(ms)+(1941421)(sm)+(roberto){2}")
+            mo = cadenaRegex.fullmatch(entrada)
+            if mo == None:
+                print("Cadena INVALIDA")
+            else:
+                print("Cadena VALIDA")
         else:
-            print("Cadena VALIDA")
+            print("Cadena INVALIDA")
     else:
         print("Cadena INVALIDA")
-
     print("¿Desea validar otra cadena? (s/n)")
     respuesta = input()
+    clear()
 
 print("Fin del programa")
+
+clear()
