@@ -38,7 +38,7 @@ while respuesta == "s":
 
     entradaSplit = re.split(r"\d+", entrada)
 
-    print(entradaSplit)
+    #print(entradaSplit)
 
     wEncontradas = re.findall(r"ms", entradaSplit[1])
     wIEncontradas = re.findall(r"sm", entradaSplit[-1])
@@ -46,7 +46,7 @@ while respuesta == "s":
     numWEncontradas = len(wEncontradas)
     numWIEncontradas = len(wIEncontradas)
 
-    print(numWEncontradas, numWIEncontradas)
+    #print(numWEncontradas, numWIEncontradas)
 
     if numWIEncontradas == 2 * numWEncontradas:
         cadenaRegex = re.compile(r"(1941421)(ms)+(1941421)(sm)+(roberto){2}")
