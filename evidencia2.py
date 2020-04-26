@@ -37,11 +37,14 @@ def clear():
 respuesta = "s"
 
 while respuesta == "s" or respuesta == "S":
+    nodoble = False
+    nodigitos = False
+    error = False
     print("Programa para validar cadenas para la gramatica:")
     print("L = { i (w)^n i (wI)^(2n)j^2 |")
     print("w = ms,")
-    print("i =1941421,")
-    print("wI= sm,")
+    print("i = 1941421,")
+    print("wI = sm,")
     print("j = roberto,")
     print("n≥ 1 })")
     print("")
@@ -68,13 +71,43 @@ while respuesta == "s" or respuesta == "S":
             mo = cadenaRegex.fullmatch(entrada)
             if mo == None:
                 print("Cadena INVALIDA")
+                error = True
+
+                # mensajes de errores especificos
+
             else:
                 print("Cadena VALIDA")
         else:
             print("Cadena INVALIDA")
+            nodoble = True
+            error = True
     else:
         print("Cadena INVALIDA")
+        nodigitos = True
+        error = True
 
+    cadenaRegex_i = re.compile(r"(1941421)\D+(1941421)\D+")
+    mo_i = cadenaRegex_i.fullmatch(entrada)
+    cadenaRegex_w = re.compile(r".+(ms)+.+(sm)+.+")
+    mo_w = cadenaRegex_w.fullmatch(entrada)
+    cadenaRegex_j = re.compile(r".+(roberto){2}")
+    mo_j = cadenaRegex_j.fullmatch(entrada)
+
+    if error:
+        print("")
+        print("ERROES DETECTADOS: ")
+        if mo_i == None:
+            print("    No se encontraron las matriculas (1941421) de la forma esperada")
+        if nodigitos:
+            print("    --No se ha encontrado digito alguno en la entrada")
+        if mo_w == None or nodoble:
+            print(
+                "    No se encontraron iniciales de apellidos (ms, sm) de la forma esperada"
+            )
+        if nodoble:
+            print("    --El numero de repeticiones de 'sm' no es el doble de 'ms'")
+        if mo_j == None:
+            print("    No se ha encontrado el nombre (roberto) de la forma esperada")
     print("")
     print("¿Desea validar otra cadena? (s/n)")
 
@@ -99,6 +132,6 @@ while respuesta == "s" or respuesta == "S":
         respuesta = input()
     clear()
 
-print("Fin del programa")
-
+print("Fin del programa: presione cualquier tecla...")
+tecla = input()
 clear()
