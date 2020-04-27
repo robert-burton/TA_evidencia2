@@ -10,7 +10,7 @@
 # i =todos los dígitos de tu número de matrícula,
 # wI= w inversa,
 # j = tu primer nombre,
-# n≥ 1 }
+# n >= 1 }
 # Entonces:
 #   w = "ms"
 #   i = "1941421"
@@ -46,7 +46,7 @@ while respuesta == "s" or respuesta == "S":
     print("i = 1941421,")
     print("wI = sm,")
     print("j = roberto,")
-    print("n≥ 1 })")
+    print("n >= 1 })")
     print("")
     print("")
 
